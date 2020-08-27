@@ -16,7 +16,7 @@ namespace RentCar.Helpers
             PrintColorMessage printColorMessage = new PrintColorMessage();
 
             // Print Welcome message
-            printColorMessage.Print(ConsoleColor.Green, "\n\n   Welcome to RentC, your brand new solution to manage and control       your company's data without missing anything.");
+            printColorMessage.Print(ConsoleColor.Green, "\n\n   Welcome to RentC, your brand new solution to manage and control your            company's data without missing anything.");
 
             Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
             Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();

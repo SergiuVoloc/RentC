@@ -11,18 +11,18 @@ namespace RentC.Controllers
 {
     public class CustomerController
     {
-        CustomerServices customerServices = new CustomerServices();
-        PrintColorMessage printColorMessage = new PrintColorMessage();
-        Navigation navigation = new Navigation();
 
         // Method tor Register New Customer Screen logic
         public void RegisterNewCustomer()
         {
-            Console.Clear();
+            CustomerServices customerServices = new CustomerServices();
+            PrintColorMessage printColorMessage = new PrintColorMessage();
+            Navigation navigation = new Navigation();
             Customers customer = new Customers();
+
+            Console.Clear();
             Console.Write("Name: "); customer.Name = Console.ReadLine();
             Console.Write("Birth Date: "); customer.BirthDate = Convert.ToDateTime(Console.ReadLine());
-            Console.Write("Location: "); customer.Location = Console.ReadLine();
             customerServices.Create(customer);
             /* Console.Write("Name: "); var tmpName = Console.ReadLine();
              Console.Write("Birth Date: "); var tmpBirthDate = Convert.ToDateTime(Console.ReadLine());
@@ -35,20 +35,31 @@ namespace RentC.Controllers
             navigation.GoToMenu();
         }
 
+
+
         // Method tor List Customers screen logic
         public void ListCustomers()
         {
+            CustomerServices customerServices = new CustomerServices();
+            Navigation navigation = new Navigation();
+
             Console.Clear();
-            Console.WriteLine("CustomerID \tName \t\tBirth date \t\tZip code");
+            Console.WriteLine("CustomerID \tName \t\t\tBirth date ");
             foreach (var customer in customerServices.ListAll())
             {
-                Console.WriteLine("\t{0} \t{1} \t{2}\t{3}",
+                Console.WriteLine("\t{0} \t{1} \t\t{2}",
                     customer.CustomerID,
                     customer.Name,
-                    customer.BirthDate,
-                    customer.Location);
+                    customer.BirthDate);
             }
             navigation.GoToMenu();
+        }
+
+
+
+        public void UpdateCustomer()
+        {
+
         }
     }
 }

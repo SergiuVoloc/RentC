@@ -15,7 +15,8 @@ namespace RentC.Pages
     class Menu
     {
         CustomerController customer = new CustomerController();
-        CarController car = new CarController();
+        ReservationController reservation = new ReservationController();
+        PrintColorMessage printColorMessage = new PrintColorMessage();
 
         private string PageTitle = "Menu";
         public void Index() {
@@ -30,26 +31,27 @@ namespace RentC.Pages
             Console.WriteLine("6. Update Customer");
             Console.WriteLine("7. List Customers");
             Console.WriteLine("8. Quit");
+            printColorMessage.Print(ConsoleColor.Yellow, "\n\t< ---Enter Your desired option--->");
 
             switch (Console.ReadLine())
             {
                 case "1":
-                    car.RegisterNewCarRent();
+                    reservation.RegisterNewCarRent();
                     break;
                 case "2":
-                    car.UpdateCarRent();
+                    reservation.UpdateCarRent();
                     break;
                 case "3":
-                    car.ListAvaiableCars();
+                    reservation.ListRents();
                     break;
                 case "4":
-                    car.ListRents();
+                    reservation.ListAvaiableCars();
                     break;
                 case "5":
                     customer.RegisterNewCustomer();
                     break;
                 case "6":
-                    //ListCustomers();
+                    customer.UpdateCustomer();
                     break;
                 case "7":
                     customer.ListCustomers();
