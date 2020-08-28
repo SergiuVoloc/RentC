@@ -1,4 +1,5 @@
 ﻿using RentC.Pages;
+using RepoDb.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,26 @@ namespace RentC.Helpers
                     break;
             }
         }
+
+        //implementation with custom text for Menu options
+        public void GoToMenu(string Text)
+        {
+            PrintColorMessage colorMessage = new PrintColorMessage();
+            Menu menu = new Menu();
+            
+
+            colorMessage.Print(ConsoleColor.Yellow, Text);
+
+            switch (Console.ReadKey().Key.ToString())
+            {
+                case "Enter":
+                    menu.Index();
+                    break;
+                case "Escape":
+                    { }
+                    break;
+            }
+        }
+
     }
 }

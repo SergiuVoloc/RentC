@@ -27,7 +27,7 @@ namespace RentC.Controllers
             car.Plate = Console.ReadLine();
 
             Console.Write("Customer ID: ");
-            customer.CustomerID = Convert.ToInt32(Console.ReadLine());
+            reservation.CustomerID = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Start Date: ");
             reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
@@ -36,7 +36,7 @@ namespace RentC.Controllers
             reservation.EndDate = Convert.ToDateTime(Console.ReadLine());
 
             Console.Write("Location: ");
-            car.Location = Console.ReadLine();
+            reservation.Location = Console.ReadLine();
 
             reservationServices.CreateReservation(reservation);
 
@@ -44,9 +44,33 @@ namespace RentC.Controllers
 
         }
 
-        public void UpdateCarRent()
+        public void UpdateReservaion()
         {
-            
+            Console.Clear();
+
+            Cars car = new Cars();
+            PrintColorMessage printColorMessage = new PrintColorMessage();
+            ReservationServices reservationServices = new ReservationServices();
+            Customers customer = new Customers();
+            Reservations reservation = new Reservations();
+
+            Console.Write("Car Plate: ");
+            car.Plate = Console.ReadLine();
+
+            Console.Write("Customer ID: {0}",customer.CustomerID);
+
+            Console.WriteLine("Start Date: ");
+            reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
+
+            Console.Write("End Date: ");
+            reservation.EndDate = Convert.ToDateTime(Console.ReadLine());
+
+            Console.Write("Location: ");
+            reservation.Location = Console.ReadLine();
+
+            reservationServices.UpdateReservation(reservation);
+
+            printColorMessage.Print(ConsoleColor.Yellow, "Reservation Updated succesffuly!");
 
         }
 

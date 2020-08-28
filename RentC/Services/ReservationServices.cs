@@ -50,16 +50,11 @@ namespace RentC.Services
                     catch (System.Data.SqlTypes.SqlTypeException)
                     {
                         Console.WriteLine(" \n'Birth Date' should be between:1/1/1753 and 12/31/2020");
-
+                        Console.ReadKey();
                     }
                 }
             }
         }
-        //    using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
-        //    {
-
-        //        // validation test
-               
 
 
         //        //testReservations = dbContext.Query<Reservations>(e => e.CustomerID == customer.CustomerID).FirstOrDefault();
@@ -99,14 +94,34 @@ namespace RentC.Services
                     // database data Update 
                     try
                     {
-                        var affectedRows = dbContext.ExecuteQuery("UPDATE [dbo].[Reservations] SET  StartDate = @startDate, EndDate = @endDate WHERE Id = @Id;", new
+                        // Raw SQL implementation
+
+                        //Reservations updateReservation = new Reservations();
+                        //var affectedRows = dbContext.ExecuteScalar<int>("UPDATE [dbo].[Reservations] SET  StartDate = @startDate, EndDate = @endDate, Location = @location WHERE CarID = @carID;", new{
+                        //    carID = car.CarID,
+                        //    startDate = updateReservation.StartDate,
+                        //    endDate = updateReservation.EndDate,
+                        //    location = updateReservation.Location
+
+                        //});
+                        //var updatedCarRent = dbContext.Update<Reservations>(reservation);
+
+
+                        // Fluent implementation            
+
+                        var updateReservation = new Reservations
                         {
-                            updatedPlate = car.Plate,
-                            startDate = reservation.StartDate,
-                            endDate = reservation.EndDate
-                        });
-
-
+                            CustomerID = 1,
+                            StartDate = "30/08/2020",
+                            EndDate = "31/08/2020",
+                            Location = "Craiova"
+                        };
+                        var updateCar = new Cars
+                        {
+                            CarID = 1,
+                           
+                        };
+                        var affectedRows = dbContext.Update<Reservations>(reservation);
 
 
 
@@ -163,7 +178,7 @@ namespace RentC.Services
 
 
                 reservations.ForEach(reservation =>
-                    reservation.CarID = cars.Where(o => o.CarID == reservation.CarID).AsList()
+                    reservation.Cars = cars.Where(o => o.CarID == reservation.CarID).AsList()
                 );
                 Console.WriteLine(reservations);
                 return reservations;
