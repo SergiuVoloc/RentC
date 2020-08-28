@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentC.Pages;
+using FluentValidation;
+using RepoDb;
+
 
 namespace RentC.Models
 {
@@ -14,32 +17,20 @@ namespace RentC.Models
         //private ICollection<ValidationResult> lstvalidationResult;
 
         public int CustomerID { get; set; }
-
-        [StringLength(3)]
         public string Name { get; set; }
-
-        [DataType(DataType.Date)]
-        public SqlDateTime BirthDate { get; set;}
-
+        public DateTime BirthDate { get; set;}
         public string Location { get; set; }
 
 
+        // Input Data Validation
+        public class CustomerValidator : AbstractValidator<Customers>
+        {
+            public CustomerValidator()
+            {
+                RuleFor(customer => customer.Name).MinimumLength(3).NotEmpty(); //NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)???
 
-        /* public  Customers()
-         {
-             ValidationContext context = new ValidationContext(this, null, null);
-             List<ValidationResult> validationResults = new List<ValidationResult>();
-             bool valid = Validator.TryValidateObject(this, context, validationResults, true);
-             if (!valid)
-             {
-                 foreach (ValidationResult validationResult in validationResults)
-                 {
-                     Console.WriteLine("{0}", validationResult.ErrorMessage);
-                 }
-                 Menu m = new Menu();
-                 m.RegisterNewCustomer();
-             }
-         }*/
+            }
+        }
     }
 
 }

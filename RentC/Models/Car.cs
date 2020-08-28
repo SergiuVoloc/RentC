@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,15 @@ namespace RentC.Models
         public decimal PricePerDay { get; set; }
 
         public string Location { get; set; }
+
+        // Input Data Validation
+        public class CarValidator : AbstractValidator<Cars>
+        {
+            public CarValidator()
+            {
+                RuleFor(car => car.Plate).NotEmpty(); 
+
+            }
+        }
     }
 }

@@ -13,8 +13,9 @@ namespace RentC.Helpers
         public void GoToMenu()
         {
             Menu menu = new Menu();
+            PrintColorMessage colorMessage = new PrintColorMessage();
 
-            Console.WriteLine("\n\tPress ENTER to navigate to Menu or ESC to quit");
+            colorMessage.Print(ConsoleColor.Yellow, "\n\tPress ENTER to navigate to Menu or ESC to quit");
 
             switch (Console.ReadKey().Key.ToString())
             {

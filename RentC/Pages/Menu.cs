@@ -57,7 +57,6 @@ namespace RentC.Pages
                     customer.ListCustomers();
                     break;
                 case "8":
-                    { }
                     break;
             }
         }

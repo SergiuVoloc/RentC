@@ -12,32 +12,42 @@ namespace RentC.Controllers
     public class CustomerController
     {
 
-        // Method tor Register New Customer Screen logic
+        // Method for Register New Customer Screen logic
         public void RegisterNewCustomer()
         {
             CustomerServices customerServices = new CustomerServices();
-            PrintColorMessage printColorMessage = new PrintColorMessage();
+            PrintColorMessage colorMessage = new PrintColorMessage();
             Navigation navigation = new Navigation();
             Customers customer = new Customers();
 
             Console.Clear();
-            Console.Write("Name: "); customer.Name = Console.ReadLine();
-            Console.Write("Birth Date: "); customer.BirthDate = Convert.ToDateTime(Console.ReadLine());
-            customerServices.Create(customer);
-            /* Console.Write("Name: "); var tmpName = Console.ReadLine();
-             Console.Write("Birth Date: "); var tmpBirthDate = Convert.ToDateTime(Console.ReadLine());
-             Console.Write("Zip Code: "); var tmpZipCode = Convert.ToInt32(Console.ReadLine());
-             Customers std = new Customers{ Name=tmpName, BirthDate=tmpBirthDate, ZipCode=tmpZipCode };
-            cs.New(std);*/
+            Console.Write("Name: ");       customer.Name = Console.ReadLine();
+            Console.Write("Birth Date: ");
 
-            printColorMessage.Print(ConsoleColor.Yellow, "Customer inserted succesffuly!");
+            // Birth Date format validation
+            try
+            {
+                customer.BirthDate = Convert.ToDateTime(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                if ( e is System.FormatException)
+                {
+                    colorMessage.Print(ConsoleColor.Red, "\n 'Birth Date' written incorrectly.");
+                    Console.WriteLine("\n Details: The format should be: dd-MM-yyyy");
+                }
+                
+            }
+
+            customerServices.Create(customer);
 
             navigation.GoToMenu();
         }
 
 
 
-        // Method tor List Customers screen logic
+
+        // Method for List Customers screen logic
         public void ListCustomers()
         {
             CustomerServices customerServices = new CustomerServices();
@@ -57,6 +67,7 @@ namespace RentC.Controllers
 
 
 
+        // Method for Update Customers screen logic
         public void UpdateCustomer()
         {
 

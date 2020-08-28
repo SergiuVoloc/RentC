@@ -24,8 +24,7 @@ CREATE TABLE Coupons (
 CREATE TABLE Customers (
     CustomerID int  NOT NULL IDENTITY(1, 1),
     Name varchar(50)  NOT NULL,
-    BirthDate date  NOT NULL,
-    Location varchar(50)  NOT NULL,
+    BirthDate date  NOT NULL
     CONSTRAINT Customers_pk PRIMARY KEY  (CustomerID)
 );
 
@@ -123,6 +122,8 @@ ALTER TABLE Users ADD CONSTRAINT Users_Roles
     REFERENCES Roles (RoleID);
 
 -- End of file.
+
+
 
 
 
