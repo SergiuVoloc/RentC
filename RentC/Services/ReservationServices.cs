@@ -17,7 +17,7 @@ namespace RentC.Services
 {
     public class ReservationServices
     {
-        // Register Car Rent reservation db manipulations
+        // Register Car Rent reservation database manipulations
         public void CreateReservation(Reservations reservation)
         {
             Cars car = new Cars();
@@ -67,7 +67,7 @@ namespace RentC.Services
         //}
 
 
-
+        // Update Reservation database manipulations
         public void UpdateReservation(Reservations reservation)
         {
             Cars car = new Cars();
@@ -96,32 +96,36 @@ namespace RentC.Services
                     {
                         // Raw SQL implementation
 
-                        //Reservations updateReservation = new Reservations();
-                        //var affectedRows = dbContext.ExecuteScalar<int>("UPDATE [dbo].[Reservations] SET  StartDate = @startDate, EndDate = @endDate, Location = @location WHERE CarID = @carID;", new{
-                        //    carID = car.CarID,
-                        //    startDate = updateReservation.StartDate,
-                        //    endDate = updateReservation.EndDate,
-                        //    location = updateReservation.Location
-
-                        //});
-                        //var updatedCarRent = dbContext.Update<Reservations>(reservation);
-
-
-                        // Fluent implementation            
-
-                        var updateReservation = new Reservations
+                        Reservations updateReservation = new Reservations();
+                        var affectedRows = dbContext.ExecuteScalar<int>("UPDATE [dbo].[Reservations] SET  StartDate = @startDate, EndDate = @endDate, Location = @location WHERE CarID = @carID;", new
                         {
-                            CustomerID = 1,
-                            StartDate = "30/08/2020",
-                            EndDate = "31/08/2020",
-                            Location = "Craiova"
-                        };
-                        var updateCar = new Cars
-                        {
-                            CarID = 1,
-                           
-                        };
-                        var affectedRows = dbContext.Update<Reservations>(reservation);
+                            carID = car.CarID,
+                            startDate = updateReservation.StartDate,
+                            endDate = updateReservation.EndDate,
+                            location = updateReservation.Location
+
+                        });
+                        var updatedCarRent = dbContext.Update<Reservations>(reservation);
+
+
+                        // Fluent implementation             
+
+                        //var updateReservation = new Reservations
+                        //{
+                        //    CustomerID = reservation.CustomerID,
+                        //    StartDate = reservation.StartDate,
+                        //    EndDate = reservation.EndDate,     
+                        //    Location = reservation.Location
+                        //};
+                        //var updateCar = new Cars
+                        //{
+                        //    Plate = car.Plate ,
+
+                        //};
+                        //var affectedRows = dbContext.Update<Reservations>(reservation);
+                        //var affectedRows2 = dbContext.Update<Cars>(car);
+
+
 
 
 
@@ -140,8 +144,7 @@ namespace RentC.Services
 
 
 
-
-        // List Customers db manipulations
+        // List Customers database manipulations
         public IEnumerable<Reservations> ListAll()
         {
             using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
@@ -152,6 +155,8 @@ namespace RentC.Services
 
 
 
+
+        // List Available Cars database manipulations
         public IEnumerable<Reservations> ListAvailableCars()
         {
             using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())

@@ -21,7 +21,13 @@ namespace RentC.Controllers
             Customers customer = new Customers();
 
             Console.Clear();
-            Console.Write("Name: ");       customer.Name = Console.ReadLine();
+
+            Console.WriteLine("Customer ID: "); 
+            customer.CustomerID = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Name: ");       
+            customer.Name = Console.ReadLine();
+
             Console.Write("Birth Date: ");
 
             // Birth Date format validation
@@ -70,7 +76,26 @@ namespace RentC.Controllers
         // Method for Update Customers screen logic
         public void UpdateCustomer()
         {
+            Console.Clear();
 
+            PrintColorMessage printColorMessage = new PrintColorMessage();
+            CustomerServices customerServices = new CustomerServices();
+            Customers customer = new Customers();
+            Navigation navigation = new Navigation();
+
+            Console.Write("Customer ID: ");
+            customer.CustomerID = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Name: ");
+            customer.Name = Console.ReadLine();
+
+            Console.WriteLine("Birth Date: ");
+            customer.BirthDate = Convert.ToDateTime(Console.ReadLine());
+
+            customerServices.Update(customer);
+
+            printColorMessage.Print(ConsoleColor.Yellow, "Customer Updated succesffuly!");
+            navigation.GoToMenu();
         }
     }
 }

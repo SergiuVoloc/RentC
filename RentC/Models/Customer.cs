@@ -19,7 +19,6 @@ namespace RentC.Models
         public int CustomerID { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set;}
-        public string Location { get; set; }
 
 
         // Input Data Validation
@@ -27,7 +26,12 @@ namespace RentC.Models
         {
             public CustomerValidator()
             {
-                RuleFor(customer => customer.Name).MinimumLength(3).NotEmpty(); //NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)???
+                RuleFor(customer => customer.CustomerID).NotEmpty();//NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)                uniq validation???
+
+                RuleFor(customer => customer.Name).MinimumLength(3).NotEmpty(); 
+
+                RuleFor(customer => customer.BirthDate).NotEmpty();
+
 
             }
         }

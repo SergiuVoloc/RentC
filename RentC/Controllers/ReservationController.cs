@@ -44,6 +44,9 @@ namespace RentC.Controllers
 
         }
 
+
+
+        // Method tor Update Car Rent Screen logic
         public void UpdateReservaion()
         {
             Console.Clear();
@@ -53,11 +56,13 @@ namespace RentC.Controllers
             ReservationServices reservationServices = new ReservationServices();
             Customers customer = new Customers();
             Reservations reservation = new Reservations();
+            Navigation navigation = new Navigation();
 
             Console.Write("Car Plate: ");
             car.Plate = Console.ReadLine();
 
-            Console.Write("Customer ID: {0}",customer.CustomerID);
+            Console.Write("Customer ID: ");
+            reservation.CustomerID = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Start Date: ");
             reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
@@ -71,7 +76,7 @@ namespace RentC.Controllers
             reservationServices.UpdateReservation(reservation);
 
             printColorMessage.Print(ConsoleColor.Yellow, "Reservation Updated succesffuly!");
-
+            navigation.GoToMenu();
         }
 
 
@@ -100,7 +105,7 @@ namespace RentC.Controllers
 
 
 
-
+        // Method tor List Available Cars Screen logic
         public void ListAvaiableCars()
         {
             ReservationServices reservationServices = new ReservationServices();
