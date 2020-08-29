@@ -64,7 +64,7 @@ namespace RentC.Controllers
             Console.Write("Customer ID: ");
             reservation.CustomerID = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Start Date: ");
+            Console.Write("Start Date: ");
             reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
 
             Console.Write("End Date: ");
@@ -75,32 +75,34 @@ namespace RentC.Controllers
 
             reservationServices.UpdateReservation(reservation);
 
-            printColorMessage.Print(ConsoleColor.Yellow, "Reservation Updated succesffuly!");
+   
             navigation.GoToMenu();
         }
 
 
-        // Method tor List Rents screen logic
+
+
+        // Method tor List Reservations screen logic
         public void ListRents()
         {
             Cars car = new Cars();
             ReservationServices reservationServices = new ReservationServices();
             Navigation navigation = new Navigation();
-            Reservations reservation = new Reservations();
+
 
             Console.Clear();
-            reservationServices.ListAvailableCars();
-            /*foreach (var searchCar in reservationServices.ListAvailableCars())
+            foreach (var item in reservationServices.ListAvailableCars())
             {
                 Console.WriteLine(" {0} \t{1} \t{2}\t{3}",
-                    searchCar.Plate,
-                    searchCar.Model,
-                    reservation.StartDate,
-                    reservation.EndDate,
-                    reservation.Location);
-            }*/
+                    car.Plate,
+                    car.Model,
+                    item.StartDate,
+                    item.EndDate,
+                    item.Location);
+            }
             navigation.GoToMenu();
         }
+
 
 
 
@@ -110,15 +112,17 @@ namespace RentC.Controllers
         {
             ReservationServices reservationServices = new ReservationServices();
             Navigation navigation = new Navigation();
-            
+            Cars car = new Cars();
+            string searchedPlate = car.Plate;
+            string searchedModel = car.Model;
 
             Console.Clear();
             Console.WriteLine("Car Plate \tCar Model \tStart date \tEnd date \tLocation");
-            reservationServices.ListAvailableCars();
             foreach (var item in reservationServices.ListAvailableCars())
             {
                 Console.WriteLine(" {0} \t{1} \t{2} \t{3} \t{4}",
-                    item.Cars,
+                    searchedPlate,
+                    searchedModel,
                     item.StartDate,
                     item.EndDate,
                     item.Location);

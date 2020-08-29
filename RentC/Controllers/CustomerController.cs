@@ -22,10 +22,20 @@ namespace RentC.Controllers
 
             Console.Clear();
 
-            Console.WriteLine("Customer ID: "); 
+            Console.Write("Customer ID: ");
             customer.CustomerID = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Name: ");       
+            //return error if ID is already used, if not create new one
+            //public async Task<bool> IsIdListValid(IEnumerable<int> idList)
+            //{
+            //    var validIds = await _context.Foo.Select(x => x.Id).ToListAync();
+            //    return idList.All(x => validIds.Contains(x));
+            //}
+            //IsIdListValid(customer.CustomerID);
+
+
+
+            Console.Write("Name: ");
             customer.Name = Console.ReadLine();
 
             Console.Write("Birth Date: ");
@@ -47,9 +57,10 @@ namespace RentC.Controllers
 
             customerServices.Create(customer);
 
+            colorMessage.Print(ConsoleColor.Yellow, "Customer ID is: {0}");
+
             navigation.GoToMenu();
         }
-
 
 
 
@@ -78,7 +89,7 @@ namespace RentC.Controllers
         {
             Console.Clear();
 
-            PrintColorMessage printColorMessage = new PrintColorMessage();
+            PrintColorMessage colorMessage = new PrintColorMessage();
             CustomerServices customerServices = new CustomerServices();
             Customers customer = new Customers();
             Navigation navigation = new Navigation();
@@ -94,7 +105,7 @@ namespace RentC.Controllers
 
             customerServices.Update(customer);
 
-            printColorMessage.Print(ConsoleColor.Yellow, "Customer Updated succesffuly!");
+            colorMessage.Print(ConsoleColor.Yellow, "Customer Updated succesffuly!");
             navigation.GoToMenu();
         }
     }

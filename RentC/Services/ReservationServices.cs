@@ -67,6 +67,7 @@ namespace RentC.Services
         //}
 
 
+
         // Update Reservation database manipulations
         public void UpdateReservation(Reservations reservation)
         {
@@ -95,7 +96,6 @@ namespace RentC.Services
                     try
                     {
                         // Raw SQL implementation
-
                         Reservations updateReservation = new Reservations();
                         var affectedRows = dbContext.ExecuteScalar<int>("UPDATE [dbo].[Reservations] SET  StartDate = @startDate, EndDate = @endDate, Location = @location WHERE CarID = @carID;", new
                         {
@@ -106,6 +106,7 @@ namespace RentC.Services
 
                         });
                         var updatedCarRent = dbContext.Update<Reservations>(reservation);
+                        colorMessage.Print(ConsoleColor.Yellow, "Reservation Updated succesffuly!");
 
 
                         // Fluent implementation             
@@ -144,7 +145,7 @@ namespace RentC.Services
 
 
 
-        // List Customers database manipulations
+        // List Reservations database manipulations
         public IEnumerable<Reservations> ListAll()
         {
             using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
@@ -161,35 +162,37 @@ namespace RentC.Services
         {
             using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
             {
-                //Console.Write("Car Plate: ");
-                //var searchPlate = Console.ReadLine();
+                Console.Write("Car Plate: ");
+                var searchPlate = Console.ReadLine();
 
-                //Console.Write("Car Model: ");
-                //var searchModel = Console.ReadLine();
+                Console.Write("Car Model: ");
+                var searchModel = Console.ReadLine();
 
-                //Console.Write("Start Date: ");
-                //var searchStartDate = Convert.ToDateTime(Console.ReadLine());
+                Console.Write("Start Date: ");
+                var searchStartDate = Convert.ToDateTime(Console.ReadLine());
 
-                //Console.Write("End Date: ");
-                //var searchEndDate = Convert.ToDateTime(Console.ReadLine());
+                Console.Write("End Date: ");
+                var searchEndDate = Convert.ToDateTime(Console.ReadLine());
 
-                //Console.Write("Location: ");
-                //var searchLocation = Console.ReadLine();
+                Console.Write("Location: ");
+                var searchLocation = Console.ReadLine();
 
-               
-                var extractor = dbContext.ExecuteQueryMultiple("SELECT Cars.Plate, Cars.Model, Reservations.StartDate, Reservations.EndDate, Reservations.Location FROM  Reservations INNER JOIN Cars ON Cars.CarID = Reservations.CarID");
-                var cars = extractor.Extract<Cars>().AsList();
-                var reservations = extractor.Extract<Reservations>().AsList();
+                return dbContext.ExecuteQuery<Reservations>("select Cars.Plate = @searchPlate, Cars.Model= @searchModel, Reservations.StartDate = searchStartDate, Reservations.EndDate = searchEndDate, Reservations.Location = searchLocation from Reservations INNER JOIN  Cars ON Reservations.CarID = Cars.CarID;");
 
+                //var extractor = dbContext.ExecuteQueryMultiple("select Cars.Plate, Cars.Model, Reservations.StartDate, Reservations.EndDate, Reservations.Location from Reservations INNER JOIN  Cars ON Reservations.CarID = Cars.CarID;");
 
-                reservations.ForEach(reservation =>
-                    reservation.Cars = cars.Where(o => o.CarID == reservation.CarID).AsList()
-                );
-                Console.WriteLine(reservations);
-                return reservations;
+                //var cars = extractor.Extract<Cars>().AsList();
+                //var reservations = extractor.Extract<Reservations>().AsList();
 
 
-        }
+                ////reservations.ForEach(reservation =>
+                ////    reservation.Cars = cars.Where(o => o.CarID == reservation.CarID).AsList()
+                ////);
+                //Console.WriteLine(reservations);
+                //return reservations;
+
+
+            }
 
         }
     }
