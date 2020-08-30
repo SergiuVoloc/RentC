@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RentC.Models
 {
-    public class Cars
+    public class Car
     {
         public int CarID { get; set; }
 
@@ -22,8 +22,10 @@ namespace RentC.Models
 
         public string Location { get; set; }
 
+
+
         // Input Data Validation
-        public class CarValidator : AbstractValidator<Cars>
+        public class CarValidator : AbstractValidator<Car>
         {
             public CarValidator()
             {

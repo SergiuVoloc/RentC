@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentC.Services;
+using Microsoft.Build.Framework;
 
 namespace RentC.Models
 {
-    public class Reservations
+    public class Reservation
     {
         public int ReservationID { get; set; }
 
         public int CarID { get; set; }
+
+        public string CarPlate { get; set; } //for now... but in future it's better to be in Car Controller 
 
         public int CustomerID { get; set; }
 
@@ -26,15 +29,15 @@ namespace RentC.Models
 
         public string CouponCode { get; set; }
 
-        public List<Cars> Cars { get; set; }
+        public List<Car> Cars { get; set; }
 
 
         // Input Data Validation
-        public class ReservationValidator : AbstractValidator<Reservations>
+        public class ReservationValidator : AbstractValidator<Reservation>
         {
             public ReservationValidator()
             {
-                Reservations searchReservation = new Reservations();
+                Reservation searchReservation = new Reservation();
 
                 RuleFor(reservation => reservation.CustomerID).NotEmpty(); //NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)???
 

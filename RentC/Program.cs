@@ -14,7 +14,7 @@ namespace RentC
     {
         static void Main(string[] args)
         {
-            // SQL Server Connection
+            // SQL Server Connection for RepoDb
             SqlServerBootstrap.Initialize();
 
             // Instantiate Menu and WelcomeText 

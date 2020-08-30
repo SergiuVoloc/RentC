@@ -15,7 +15,7 @@ using static RentC.Models.Customers;
 
 namespace RentC.Services
 {
-    public class CustomerServices
+    public class CustomerService
     {
 
         // Register Customer db manipulations
@@ -76,7 +76,7 @@ namespace RentC.Services
         // Update Customer database manipulations
         public void Update(Customers customer)
         {
-            Cars car = new Cars();
+            Car car = new Car();
             CustomerValidator validator = new CustomerValidator();
             ValidationResult result = validator.Validate(customer);
             PrintColorMessage colorMessage = new PrintColorMessage();

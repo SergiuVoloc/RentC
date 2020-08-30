@@ -15,7 +15,7 @@ namespace RentC.Controllers
         // Method for Register New Customer Screen logic
         public void RegisterNewCustomer()
         {
-            CustomerServices customerServices = new CustomerServices();
+            CustomerService customerServices = new CustomerService();
             PrintColorMessage colorMessage = new PrintColorMessage();
             Navigation navigation = new Navigation();
             Customers customer = new Customers();
@@ -67,7 +67,7 @@ namespace RentC.Controllers
         // Method for List Customers screen logic
         public void ListCustomers()
         {
-            CustomerServices customerServices = new CustomerServices();
+            CustomerService customerServices = new CustomerService();
             Navigation navigation = new Navigation();
 
             Console.Clear();
@@ -90,7 +90,7 @@ namespace RentC.Controllers
             Console.Clear();
 
             PrintColorMessage colorMessage = new PrintColorMessage();
-            CustomerServices customerServices = new CustomerServices();
+            CustomerService customerServices = new CustomerService();
             Customers customer = new Customers();
             Navigation navigation = new Navigation();
 
