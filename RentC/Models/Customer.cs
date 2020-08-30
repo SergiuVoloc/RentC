@@ -12,7 +12,7 @@ using RepoDb;
 
 namespace RentC.Models
 {
-    public class Customers
+    public class Customer
     {
         //private ICollection<ValidationResult> lstvalidationResult;
 
@@ -22,7 +22,7 @@ namespace RentC.Models
 
 
         // Input Data Validation
-        public class CustomerValidator : AbstractValidator<Customers>
+        public class CustomerValidator : AbstractValidator<Customer>
         {
             public CustomerValidator()
             {

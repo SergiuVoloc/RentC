@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RentC.Models.Customers;
+using static RentC.Models.Customer;
 
 namespace RentC.Services
 {
@@ -19,7 +19,7 @@ namespace RentC.Services
     {
 
         // Register Customer db manipulations
-        public void Create(Customers customer)
+        public void Create(Customer customer)
         {
             PrintColorMessage printColorMessage = new PrintColorMessage();
             CustomerValidator validator = new CustomerValidator();
@@ -62,11 +62,11 @@ namespace RentC.Services
 
 
         // List Customers db manipulations
-        public IEnumerable<Customers> ListAll()
+        public IEnumerable<Customer> ListAll()
         {
             using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
             {
-                return dbContext.ExecuteQuery<Customers>("select * from [dbo].[Customers];");
+                return dbContext.ExecuteQuery<Customer>("select * from [dbo].[Customers];");
             }
         }
 
@@ -74,7 +74,7 @@ namespace RentC.Services
 
 
         // Update Customer database manipulations
-        public void Update(Customers customer)
+        public void Update(Customer customer)
         {
             Car car = new Car();
             CustomerValidator validator = new CustomerValidator();
@@ -102,14 +102,14 @@ namespace RentC.Services
                     try
                     {
 
-                        var updateCustomer = new Customers
+                        var updateCustomer = new Customer
                         {
                             CustomerID = customer.CustomerID,
                             Name = customer.Name,
                             BirthDate = customer.BirthDate
                         };
 
-                        var affectedRows = dbContext.Update<Customers>(customer);
+                        var affectedRows = dbContext.Update<Customer>(customer);
                         
                     }
                     // Birth Date range validation

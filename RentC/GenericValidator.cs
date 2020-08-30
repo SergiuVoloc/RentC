@@ -20,7 +20,7 @@ namespace RentC
             );
         }
 
-        internal static bool TryValidate(Customers customers, out object lstvalidationResult)
+        internal static bool TryValidate(Customer customers, out object lstvalidationResult)
         {
             throw new NotImplementedException();
         }

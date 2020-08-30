@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RentC_ConsoleApplication.DbContexts.ReservationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<RentC_ConsoleApplication.DbContexts.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(RentC_ConsoleApplication.DbContexts.ReservationDbContext context)
+        protected override void Seed(RentC_ConsoleApplication.DbContexts.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

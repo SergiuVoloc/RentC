@@ -24,11 +24,14 @@ namespace RentC.Controllers
             Car car = new Car();
             PrintColorMessage printColorMessage = new PrintColorMessage();
             ReservationService reservationServices = new ReservationService();
-            Customers customer = new Customers();
+            Customer customer = new Customer();
             Reservation reservation = new Reservation();
             Navigation navigation = new Navigation();
 
             Console.Write("Car Plate: ");
+            reservation.CarPlate = Console.ReadLine();
+
+            Console.Write("Car ID: ");
             reservation.CarPlate = Console.ReadLine();
 
             Console.Write("Customer ID: ");
@@ -59,7 +62,7 @@ namespace RentC.Controllers
             Car car = new Car();
             PrintColorMessage printColorMessage = new PrintColorMessage();
             ReservationService reservationServices = new ReservationService();
-            Customers customer = new Customers();
+            Customer customer = new Customer();
             Reservation reservation = new Reservation();
             Navigation navigation = new Navigation();
 

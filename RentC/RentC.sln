@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_ConsoleApplication", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_WebApplication", "..\RentC_WebApplication\RentC_WebApplication.csproj", "{7FDEFE77-C488-41E7-9DCF-38CB046656E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_Services", "..\RentC_Services\RentC_Services.csproj", "{BFB61210-FC04-48BA-ABE6-DD7607814F57}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_SQLConnection", "..\RentC_SQLConnection\RentC_SQLConnection.csproj", "{F93AD43D-F0C7-416F-9CCF-34B2C12542EE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFB61210-FC04-48BA-ABE6-DD7607814F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFB61210-FC04-48BA-ABE6-DD7607814F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFB61210-FC04-48BA-ABE6-DD7607814F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFB61210-FC04-48BA-ABE6-DD7607814F57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F93AD43D-F0C7-416F-9CCF-34B2C12542EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F93AD43D-F0C7-416F-9CCF-34B2C12542EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F93AD43D-F0C7-416F-9CCF-34B2C12542EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F93AD43D-F0C7-416F-9CCF-34B2C12542EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

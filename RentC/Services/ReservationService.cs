@@ -22,7 +22,7 @@ namespace RentC.Services
         public void CreateReservation(Reservation reservation)
         {
             Car car = new Car();
-            Customers customer = new Customers();
+            Customer customer = new Customer();
             PrintColorMessage colorMessage = new PrintColorMessage();
             Navigation navigation = new Navigation();
             ReservationValidator validator = new ReservationValidator();
@@ -40,7 +40,7 @@ namespace RentC.Services
             else
             {
                 //EF
-                using (var context = new ReservationDbContext())
+                using (var context = new ApplicationDbContext())
                 {
                     try
                     {
@@ -84,7 +84,7 @@ namespace RentC.Services
             else
             {
                 //EF
-                using (var context = new ReservationDbContext())
+                using (var context = new ApplicationDbContext())
                 {
                     var reservationToUpdate = context.Reservations.First(x => x.ReservationID == reservation.ReservationID);
                     reservationToUpdate.StartDate = reservation.StartDate;
@@ -104,7 +104,7 @@ namespace RentC.Services
         public IEnumerable<Reservation> ListAll()
         {
             //EF
-            using (var context = new ReservationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var result = context.Reservations.ToList();
 

@@ -13,7 +13,7 @@ namespace RentC_ConsoleApplication.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202008301534229_Initial"; }
+            get { return "202008301940211_Initial"; }
         }
         
         string IMigrationMetadata.Source

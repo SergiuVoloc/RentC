@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentC.Models
 {
-    public class Permissions
+    public class Permission
     {
         public int PermissionID { get; set; }
 

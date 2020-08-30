@@ -18,7 +18,7 @@ namespace RentC.Controllers
             CustomerService customerServices = new CustomerService();
             PrintColorMessage colorMessage = new PrintColorMessage();
             Navigation navigation = new Navigation();
-            Customers customer = new Customers();
+            Customer customer = new Customer();
 
             Console.Clear();
 
@@ -91,7 +91,7 @@ namespace RentC.Controllers
 
             PrintColorMessage colorMessage = new PrintColorMessage();
             CustomerService customerServices = new CustomerService();
-            Customers customer = new Customers();
+            Customer customer = new Customer();
             Navigation navigation = new Navigation();
 
             Console.Write("Customer ID: ");

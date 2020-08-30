@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RentC.Models
 {
-    public class ReservationStatuses
+    public class ReservationStatuse
     {
+        [Key]
         public short ReservStatsID { get; set; }
 
         public string Name { get; set; }

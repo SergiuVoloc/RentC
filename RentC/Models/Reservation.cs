@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RentC.Services;
 using Microsoft.Build.Framework;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentC.Models
 {
@@ -17,17 +18,23 @@ namespace RentC.Models
 
         public string CarPlate { get; set; } //for now... but in future it's better to be in Car Controller 
 
-        public int CustomerID { get; set; }
-
-        public short ReservStatsID { get; set; }
-
         public DateTime StartDate{ get; set; }
 
         public DateTime EndDate { get; set; }
 
         public string Location { get; set; }
 
-        public string CouponCode { get; set; }
+        public int CustomerID { get; set; }
+        [ForeignKey("CustomerID")]
+        public Customer Customer { get; set; }
+
+        public short ReservStatsID { get; set; }
+        [ForeignKey("ReservStatsID")]
+        public ReservationStatuse ReservationStatuse { get; set; }
+
+        public int CouponCode { get; set; }
+        [ForeignKey("CouponCode")]
+        public Coupon Coupon { get; set; }
 
         public List<Car> Cars { get; set; }
 
