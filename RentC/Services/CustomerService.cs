@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using RentC.Helpers;
 using RentC.Models;
+using RentC_ConsoleApplication.DbContexts;
 using RepoDb;
 using System;
 using System.Collections.Generic;
@@ -12,24 +13,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static RentC.Models.Customer;
+using static RentC.Models.Customer;
 
 namespace RentC.Services
 {
     public class CustomerService
     {
 
+
         // Register Customer db manipulations
         public void Create(Customer customer)
         {
-            PrintColorMessage printColorMessage = new PrintColorMessage();
+            PrintColorMessage colorMessage = new PrintColorMessage();
             CustomerValidator validator = new CustomerValidator();
             ValidationResult result = validator.Validate(customer);
+            Navigation navigation = new Navigation();
 
 
             // Input Customer Name Validation
             if (!result.IsValid)
             {
-                printColorMessage.Print(ConsoleColor.Red, "\nCustomer not registered! See reason below:");
+                colorMessage.Print(ConsoleColor.Red, "\nCustomer not registered! See reason below:");
 
                 //data validation
                 foreach (var failure in result.Errors)
@@ -39,20 +43,29 @@ namespace RentC.Services
             }
             else
             {
-                using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
+                using (var context = new ApplicationDbContext())
                 {
-                    // database insertion of the new customer 
                     try
                     {
+                        context.Customers.Add(customer);
 
-                        var newCustomer = dbContext.Insert(customer);
-                        printColorMessage.Print(ConsoleColor.Yellow, "\n Customer inserted succesffuly!");
+                        try
+                        {
+                            context.SaveChanges();
+                        }
+                        catch (SqlException)
+                        {
+                            colorMessage.Print(ConsoleColor.Red, "Error: CustomerID should not exist in the Customer table");
+
+                        }
+
+                        colorMessage.Print(ConsoleColor.Yellow, "Customer created succesffuly !");
+                        
+                        navigation.GoToMenu();
                     }
-                    // Birth Date range validation
-                    catch (System.Data.SqlTypes.SqlTypeException)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(" \n'Birth Date' should be between:1/1/1753 and 12/31/2002");
-
+                        Console.WriteLine(ex.Message);
                     }
                 }
             }
@@ -64,9 +77,12 @@ namespace RentC.Services
         // List Customers db manipulations
         public IEnumerable<Customer> ListAll()
         {
-            using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
+            //EF
+            using (var context = new ApplicationDbContext())
             {
-                return dbContext.ExecuteQuery<Customer>("select * from [dbo].[Customers];");
+                var result = context.Customers.ToList();
+
+                return result;
             }
         }
 
@@ -81,8 +97,6 @@ namespace RentC.Services
             ValidationResult result = validator.Validate(customer);
             PrintColorMessage colorMessage = new PrintColorMessage();
             
-
-
             // Input Customer Name Validation
             if (!result.IsValid)
             {
@@ -96,29 +110,17 @@ namespace RentC.Services
             }
             else
             {
-                using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
+                //EF
+                using (var context = new ApplicationDbContext())
                 {
-                    // database data Update 
-                    try
-                    {
+                    var customerToUpdate =
+                        context.Customers.First(x => x.CustomerID == customer.CustomerID);
+                    customerToUpdate.Name = customer.Name;
+                    customerToUpdate.BirthDate = customer.BirthDate;
 
-                        var updateCustomer = new Customer
-                        {
-                            CustomerID = customer.CustomerID,
-                            Name = customer.Name,
-                            BirthDate = customer.BirthDate
-                        };
-
-                        var affectedRows = dbContext.Update<Customer>(customer);
-                        
-                    }
-                    // Birth Date range validation
-                    catch (System.Data.SqlTypes.SqlTypeException)
-                    {
-                        Console.WriteLine(" \n'Birth Date' should be between:1/1/1753 and 12/31/2020");
-
-                    }
+                    context.SaveChanges();
                 }
+
             }
         }
     }

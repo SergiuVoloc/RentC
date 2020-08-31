@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -27,7 +27,7 @@
                 "dbo.Coupons",
                 c => new
                     {
-                        CouponCode = c.Int(nullable: false, identity: true),
+                        CouponCode = c.String(nullable: false, maxLength: 128),
                         Description = c.String(),
                         Discount = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
@@ -65,10 +65,10 @@
                         Location = c.String(),
                         CustomerID = c.Int(nullable: false),
                         ReservStatsID = c.Short(nullable: false),
-                        CouponCode = c.Int(nullable: false),
+                        CouponCode = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ReservationID)
-                .ForeignKey("dbo.Coupons", t => t.CouponCode, cascadeDelete: true)
+                .ForeignKey("dbo.Coupons", t => t.CouponCode)
                 .ForeignKey("dbo.Customers", t => t.CustomerID, cascadeDelete: true)
                 .ForeignKey("dbo.ReservationStatuses", t => t.ReservStatsID, cascadeDelete: true)
                 .Index(t => t.CustomerID)
@@ -96,14 +96,18 @@
                 .PrimaryKey(t => t.RoleID);
             
             CreateTable(
-                "dbo.RolePermissions",
+                "dbo.RolesPermissions",
                 c => new
                     {
-                        RolePermissionID = c.Int(nullable: false, identity: true),
+                        RolesPermissionID = c.Int(nullable: false, identity: true),
                         RoleID = c.Int(nullable: false),
                         PermissionID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.RolePermissionID);
+                .PrimaryKey(t => t.RolesPermissionID)
+                .ForeignKey("dbo.Permissions", t => t.PermissionID, cascadeDelete: true)
+                .ForeignKey("dbo.Roles", t => t.RoleID, cascadeDelete: true)
+                .Index(t => t.RoleID)
+                .Index(t => t.PermissionID);
             
             CreateTable(
                 "dbo.Users",
@@ -114,22 +118,30 @@
                         Enabled = c.Byte(nullable: false),
                         RoleID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.UserID);
+                .PrimaryKey(t => t.UserID)
+                .ForeignKey("dbo.Roles", t => t.RoleID, cascadeDelete: true)
+                .Index(t => t.RoleID);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Users", "RoleID", "dbo.Roles");
+            DropForeignKey("dbo.RolesPermissions", "RoleID", "dbo.Roles");
+            DropForeignKey("dbo.RolesPermissions", "PermissionID", "dbo.Permissions");
             DropForeignKey("dbo.Reservations", "ReservStatsID", "dbo.ReservationStatuses");
             DropForeignKey("dbo.Reservations", "CustomerID", "dbo.Customers");
             DropForeignKey("dbo.Reservations", "CouponCode", "dbo.Coupons");
             DropForeignKey("dbo.Cars", "Reservation_ReservationID", "dbo.Reservations");
+            DropIndex("dbo.Users", new[] { "RoleID" });
+            DropIndex("dbo.RolesPermissions", new[] { "PermissionID" });
+            DropIndex("dbo.RolesPermissions", new[] { "RoleID" });
             DropIndex("dbo.Reservations", new[] { "CouponCode" });
             DropIndex("dbo.Reservations", new[] { "ReservStatsID" });
             DropIndex("dbo.Reservations", new[] { "CustomerID" });
             DropIndex("dbo.Cars", new[] { "Reservation_ReservationID" });
             DropTable("dbo.Users");
-            DropTable("dbo.RolePermissions");
+            DropTable("dbo.RolesPermissions");
             DropTable("dbo.Roles");
             DropTable("dbo.ReservationStatuses");
             DropTable("dbo.Reservations");

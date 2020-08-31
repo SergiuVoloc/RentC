@@ -21,8 +21,7 @@ namespace RentC.Services
         // Register Car Rent reservation database manipulations
         public void CreateReservation(Reservation reservation)
         {
-            Car car = new Car();
-            Customer customer = new Customer();
+
             PrintColorMessage colorMessage = new PrintColorMessage();
             Navigation navigation = new Navigation();
             ReservationValidator validator = new ReservationValidator();
@@ -39,13 +38,22 @@ namespace RentC.Services
             }
             else
             {
-                //EF
+               
                 using (var context = new ApplicationDbContext())
                 {
                     try
                     {
                         context.Reservations.Add(reservation);
-                        context.SaveChanges();
+
+                        try
+                        {
+                            context.SaveChanges();
+                        }
+                        catch (SqlException)
+                        {
+                            colorMessage.Print(ConsoleColor.Red, "Error: CustomerID should exist in the Customer table");
+
+                        }
 
                         colorMessage.Print(ConsoleColor.Yellow, "Reservation created succesffuly!");
                         navigation.GoToMenu();
@@ -54,6 +62,8 @@ namespace RentC.Services
                     {
                         Console.WriteLine(ex.Message);
                     }
+
+
                 }
             }
         }
@@ -86,7 +96,9 @@ namespace RentC.Services
                 //EF
                 using (var context = new ApplicationDbContext())
                 {
-                    var reservationToUpdate = context.Reservations.First(x => x.ReservationID == reservation.ReservationID);
+                    var reservationToUpdate = 
+                        context.Reservations.First(x => x.ReservationID == reservation.ReservationID);
+                    reservationToUpdate.CarPlate = reservation.CarPlate;
                     reservationToUpdate.StartDate = reservation.StartDate;
                     reservationToUpdate.EndDate = reservation.EndDate;
                     reservationToUpdate.Location = reservation.Location;

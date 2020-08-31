@@ -32,7 +32,7 @@ namespace RentC.Models
         [ForeignKey("ReservStatsID")]
         public ReservationStatuse ReservationStatuse { get; set; }
 
-        public int CouponCode { get; set; }
+        public string CouponCode { get; set; }
         [ForeignKey("CouponCode")]
         public Coupon Coupon { get; set; }
 

@@ -32,10 +32,12 @@ namespace RentC.Controllers
             reservation.CarPlate = Console.ReadLine();
 
             Console.Write("Car ID: ");
-            reservation.CarPlate = Console.ReadLine();
+            reservation.CarID = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Customer ID: ");
             reservation.CustomerID = Convert.ToInt32(Console.ReadLine());
+
+            reservation.ReservStatsID = 1;
 
             Console.Write("Start Date: ");
             reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
@@ -67,16 +69,13 @@ namespace RentC.Controllers
             Navigation navigation = new Navigation();
 
 
-            Console.WriteLine("Reservation ID:");
+            Console.Write("Reservation ID:");
             reservation.ReservationID = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Car Plate: ");
             reservation.CarPlate = Console.ReadLine();
 
-            Console.Write("Customer ID: ");
-            reservation.CustomerID = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Start Date: ");
+            Console.Write("Start Date: ");
             reservation.StartDate = Convert.ToDateTime(Console.ReadLine());
 
             Console.Write("End Date: ");
@@ -103,10 +102,11 @@ namespace RentC.Controllers
 
             Console.Clear();
             var reservations = reservationServices.ListAll();
-            Console.WriteLine("Car Plate  CustomerID \tStart Date \t\tEnd Date           Location");
+            Console.WriteLine("\t<---------------- All Reservations ------------------>");
+            Console.WriteLine("\n ID  Car Plate  CustomerID      Start Date     End Date            Location");
             foreach (var reservation in reservations)
             {
-                var message = $"\n{reservation.CarPlate}    {reservation.CustomerID} \t\t {reservation.StartDate} \t{reservation.EndDate}  {reservation.Location}";
+                var message = $"\n {reservation.ReservationID}   {reservation.CarPlate}    {reservation.CustomerID}        {reservation.StartDate}    {reservation.EndDate}   {reservation.Location}";
                 Console.WriteLine(message);
             }
             navigation.GoToMenu();

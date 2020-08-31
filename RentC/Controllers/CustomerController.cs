@@ -1,8 +1,14 @@
 ﻿using RentC.Helpers;
 using RentC.Models;
 using RentC.Services;
+using RepoDb;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +28,7 @@ namespace RentC.Controllers
 
             Console.Clear();
 
-            Console.Write("Customer ID: ");
-            customer.CustomerID = Convert.ToInt32(Console.ReadLine());
-
-            //return error if ID is already used, if not create new one
-            //public async Task<bool> IsIdListValid(IEnumerable<int> idList)
-            //{
-            //    var validIds = await _context.Foo.Select(x => x.Id).ToListAync();
-            //    return idList.All(x => validIds.Contains(x));
-            //}
-            //IsIdListValid(customer.CustomerID);
-
-
+            customer.CustomerID = customer.CustomerID;
 
             Console.Write("Name: ");
             customer.Name = Console.ReadLine();
@@ -57,10 +52,10 @@ namespace RentC.Controllers
 
             customerServices.Create(customer);
 
-            colorMessage.Print(ConsoleColor.Yellow, "Customer ID is: {0}");
-
             navigation.GoToMenu();
+
         }
+
 
 
 
@@ -74,13 +69,14 @@ namespace RentC.Controllers
             Console.WriteLine("CustomerID \tName \t\t\tBirth date ");
             foreach (var customer in customerServices.ListAll())
             {
-                Console.WriteLine("\t{0} \t{1} \t\t{2}",
+                Console.WriteLine("\n\t{0} \t{1} \t\t{2}",
                     customer.CustomerID,
                     customer.Name,
                     customer.BirthDate);
             }
             navigation.GoToMenu();
         }
+
 
 
 
@@ -100,7 +96,7 @@ namespace RentC.Controllers
             Console.Write("Name: ");
             customer.Name = Console.ReadLine();
 
-            Console.WriteLine("Birth Date: ");
+            Console.Write("Birth Date: ");
             customer.BirthDate = Convert.ToDateTime(Console.ReadLine());
 
             customerServices.Update(customer);

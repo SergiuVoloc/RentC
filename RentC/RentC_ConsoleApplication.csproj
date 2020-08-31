@@ -138,21 +138,12 @@
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="DbContexts\ApplicationDbContext.cs" />
-    <Compile Include="GenericValidator.cs" />
     <Compile Include="Helpers\Navigation.cs" />
     <Compile Include="Helpers\PrintColorMessage.cs" />
     <Compile Include="Helpers\WelcomeText.cs" />
-    <Compile Include="Migrations\202008301940211_Initial.cs" />
-    <Compile Include="Migrations\202008301940211_Initial.designer.cs">
-      <DependentUpon>202008301940211_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008301947446_FixFK.cs" />
-    <Compile Include="Migrations\202008301947446_FixFK.designer.cs">
-      <DependentUpon>202008301947446_FixFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008301956372_FixEFDbCreation.cs" />
-    <Compile Include="Migrations\202008301956372_FixEFDbCreation.designer.cs">
-      <DependentUpon>202008301956372_FixEFDbCreation.cs</DependentUpon>
+    <Compile Include="Migrations\202008310745116_initial.cs" />
+    <Compile Include="Migrations\202008310745116_initial.designer.cs">
+      <DependentUpon>202008310745116_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AvaiableCarViewModel.cs" />
@@ -229,14 +220,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008301940211_Initial.resx">
-      <DependentUpon>202008301940211_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008301947446_FixFK.resx">
-      <DependentUpon>202008301947446_FixFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008301956372_FixEFDbCreation.resx">
-      <DependentUpon>202008301956372_FixEFDbCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008310745116_initial.resx">
+      <DependentUpon>202008310745116_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

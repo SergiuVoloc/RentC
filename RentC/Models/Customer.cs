@@ -14,7 +14,6 @@ namespace RentC.Models
 {
     public class Customer
     {
-        //private ICollection<ValidationResult> lstvalidationResult;
 
         public int CustomerID { get; set; }
         public string Name { get; set; }
@@ -26,7 +25,7 @@ namespace RentC.Models
         {
             public CustomerValidator()
             {
-                RuleFor(customer => customer.CustomerID).NotEmpty();//NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)                uniq validation???
+                RuleFor(customer => customer.CustomerID).NotNull();//NotEqual("{0}",DbConnectionExtension.Exists(CustomerID)                uniq validation???
 
                 RuleFor(customer => customer.Name).MinimumLength(3).NotEmpty(); 
 

@@ -10,7 +10,7 @@ namespace RentC.Models
     public class Coupon
     {
         [Key]
-        public int CouponCode { get; set; }
+        public string CouponCode { get; set; }
 
         public string Description { get; set; }
 
