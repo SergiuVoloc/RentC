@@ -1,9 +1,9 @@
-﻿namespace RentC_ConsoleApplication.Migrations
+﻿namespace RentC_DbConnection.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {

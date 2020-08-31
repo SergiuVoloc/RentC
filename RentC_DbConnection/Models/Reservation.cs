@@ -1,14 +1,9 @@
 ﻿using FluentValidation;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RentC_ConsoleApplication.Services;
-using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RentC_ConsoleApplication.Models
+namespace RentC_DbConnection.Models
 {
     public class Reservation
     {

@@ -22,6 +22,7 @@ namespace RentC_WebServer
 
         DataTable reservationDataTable = new DataTable();
         DBAccess DBAccess = new DBAccess();
+        
 
         [WebMethod]
         public string HelloWorld()
@@ -37,30 +38,38 @@ namespace RentC_WebServer
         }
 
 
+
+
+
         [WebMethod]
         public string ListAvailableCars()
         {
             reservationDataTable.Columns.Add("Plate");
+            reservationDataTable.Columns.Add("Manufacturer");
             reservationDataTable.Columns.Add("Model");
-            reservationDataTable.Columns.Add("StartDate");
-            reservationDataTable.Columns.Add("EndDate");
-            reservationDataTable.Columns.Add("Location");
+            reservationDataTable.Columns.Add("PricePerDay");
 
-            reservationDataTable.Rows.Add("DJ WP ORE", "Audi", "30/08/2020", "31/08/2020", "Craiova");
+            reservationDataTable.Rows.Add("DA 98 LFG", "Porsche", "Cayenne", "65.12");
 
 
             return JsonConvert.SerializeObject(reservationDataTable);
         }
 
-        [WebMethod]
-        public string dataTableForUsers()
-        {
-            string query = "select Cars.Plate = @searchPlate, Cars.Model= @searchModel, Reservations.StartDate = searchStartDate, Reservations.EndDate = searchEndDate, Reservations.Location = searchLocation from Reservations INNER JOIN  Cars ON Reservations.CarID = Cars.CarID";
 
-            DBAccess.readDatathroughAdapter(query,reservationDataTable);
 
-            return JsonConvert.SerializeObject(reservationDataTable);
-        }
+        //[WebMethod]
+        //public string dataTableForUsers()
+        //{
+        //    var location = "Craiova";
+        //    var endDate = "10/09/2020";
+        //    var startDate = "05/09/2020";
+
+        //     string query = "select * from Cars WHERE Location = " + location + "AND CarID NOT IN" + "(SELECT CarID FROM Reservations WHERE NOT (StartDate < " + endDate + " ) OR (EndDate > " + startDate + "))  ";
+
+        //    DBAccess.readDatathroughAdapter(query,reservationDataTable);
+
+        //    return JsonConvert.SerializeObject(reservationDataTable);
+        //}
      
     }
 }

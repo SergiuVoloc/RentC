@@ -137,25 +137,10 @@
   <ItemGroup>
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="DbContexts\ApplicationDbContext.cs" />
     <Compile Include="Helpers\Navigation.cs" />
     <Compile Include="Helpers\PrintColorMessage.cs" />
     <Compile Include="Helpers\WelcomeText.cs" />
-    <Compile Include="Migrations\202008310745116_initial.cs" />
-    <Compile Include="Migrations\202008310745116_initial.designer.cs">
-      <DependentUpon>202008310745116_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AvaiableCarViewModel.cs" />
-    <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\Coupon.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Permission.cs" />
-    <Compile Include="Models\Reservation.cs" />
-    <Compile Include="Models\ReservationStatuse.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\RolesPermission.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Pages\Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,10 +205,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008310745116_initial.resx">
-      <DependentUpon>202008310745116_initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\RentC_DbConnection\RentC_DbConnection.csproj">
+      <Project>{FCF06EC3-CB8A-46CC-8CC9-34F19827982C}</Project>
+      <Name>RentC_DbConnection</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.2.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

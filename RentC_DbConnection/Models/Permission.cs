@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC_ConsoleApplication.Models
+namespace RentC_DbConnection.Models
 {
     public class Permission
     {

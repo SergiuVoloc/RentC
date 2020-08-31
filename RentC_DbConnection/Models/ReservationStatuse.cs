@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC_ConsoleApplication.Models
+namespace RentC_DbConnection.Models
 {
-    public class Coupon
+    public class ReservationStatuse
     {
         [Key]
-        public string CouponCode { get; set; }
+        public short ReservStatsID { get; set; }
+
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public decimal Discount { get; set; }
     }
 }

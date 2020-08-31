@@ -1,8 +1,8 @@
 ﻿using FluentValidation.Results;
 using Newtonsoft.Json;
 using RentC_ConsoleApplication.Helpers;
-using RentC_ConsoleApplication.Models;
-using RentC_ConsoleApplication.DbContexts;
+using RentC_DbConnection;
+using RentC_DbConnection.Models;
 using RepoDb;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
-using static RentC_ConsoleApplication.Models.Reservation;
-
+using static RentC_DbConnection.Models.Reservation;
 
 namespace RentC_ConsoleApplication.Services
 {
     public class ReservationService
     {
+
         // Register Car Rent reservation database manipulations
         public void CreateReservation(Reservation reservation)
         {
@@ -120,7 +120,7 @@ namespace RentC_ConsoleApplication.Services
             {
                 var result = context.Reservations.ToList();
 
-                return result;
+                return (IEnumerable<Reservation>)result;
             }
         }
 
@@ -130,41 +130,18 @@ namespace RentC_ConsoleApplication.Services
         // List Available Cars database manipulations
         public string ListAvailableCars()
         {
-            using (IDbConnection dbContext = new SqlConnection(ConfigurationManager.ConnectionStrings["RentC"].ConnectionString).EnsureOpen())
-            {
-                //Console.Write("Car Plate: ");
-                //var searchPlate = Console.ReadLine();
+           
 
-                //Console.Write("Car Model: ");
-                //var searchModel = Console.ReadLine();
+            // Web Service utilisation
+            RentC_ConsoleApplication.localhost.WebService2 webService = new RentC_ConsoleApplication.localhost.WebService2();
 
-                //Console.Write("Start Date: ");
-                //var searchStartDate = Convert.ToDateTime(Console.ReadLine());
+           
 
-                //Console.Write("End Date: ");
-                //var searchEndDate = Convert.ToDateTime(Console.ReadLine());
+            var car = webService.ListAvailableCars();
 
-                //Console.Write("Location: ");
-                //var searchLocation = Console.ReadLine();
-
-
-                // Web Service utilisation
-                RentC_ConsoleApplication.localhost.WebService2 webService = new RentC_ConsoleApplication.localhost.WebService2();
-                HttpClient httpClient = new HttpClient();
-                //string availableCarsJson = webService.ListAvailableCars();
-                //WebServicesSettings(httpClient);
-                //HttpResponseMessage message = httpClient.GetAsync("ListAvailableCars").Result;
-                
-                //var reservationJson = message.Content.ReadAsStringAsync().Result;
-
-                //var resultJson = splitString(reservationJson).ToString();
-
-                //Console.WriteLine(resultJson);
-
-                var test = webService.ListAvailableCars();
-
-                return test;
-            }
+            JsonConvert.DeserializeObject(car).ToString();
+            return car;
+        
         }
 
         private static void WebServicesSettings(HttpClient httpClient)

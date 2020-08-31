@@ -2,7 +2,6 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using RentC_ConsoleApplication.Models;
 using RepoDb;
 using RentC_ConsoleApplication.Helpers;
 using RentC_ConsoleApplication.Services;

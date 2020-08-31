@@ -1,6 +1,6 @@
 ﻿using RentC_ConsoleApplication.Helpers;
-using RentC_ConsoleApplication.Models;
 using RentC_ConsoleApplication.Services;
+using RentC_DbConnection.Models;
 using RepoDb;
 using System;
 using System.Collections.Generic;

@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RentC_ConsoleApplication.Pages;
 using FluentValidation;
-using RepoDb;
 
-
-namespace RentC_ConsoleApplication.Models
+namespace RentC_DbConnection.Models
 {
     public class Customer
     { 

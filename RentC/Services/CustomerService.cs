@@ -1,7 +1,6 @@
 ﻿using FluentValidation.Results;
 using RentC_ConsoleApplication.Helpers;
-using RentC_ConsoleApplication.Models;
-using RentC_ConsoleApplication.DbContexts;
+using RentC_DbConnection;
 using RepoDb;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RentC_ConsoleApplication.Models.Customer;
+using static RentC_DbConnection.Models.Customer;
+using RentC_DbConnection.Models;
 
 namespace RentC_ConsoleApplication.Services
 {

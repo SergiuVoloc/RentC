@@ -6,20 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC_ConsoleApplication.Models
+namespace RentC_DbConnection.Models
 {
-    public class RolesPermission
+    public class User
     {
         [Key]
-        public int RolesPermissionID { get; set; }
+        public int UserID { get; set; }
+
+        public string Password { get; set; }
+
+        public byte Enabled { get; set; }
 
         public int RoleID { get; set; }
         [ForeignKey("RoleID")]
         public Role Role { get; set; }
-
-        public int PermissionID { get; set; }
-        [ForeignKey("PermissionID")]
-        public Permission Permission { get; set; }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using RentC_ConsoleApplication.Models;
+﻿
+using RentC_DbConnection.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
