@@ -26,5 +26,15 @@ namespace RentC_WebApplication.Controllers
 
             return View();
         }
+
+        public ActionResult WelcomeText()
+        {
+            
+            
+
+           
+          
+            return View();
+        }
     }
 }

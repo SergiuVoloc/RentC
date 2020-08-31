@@ -1,8 +1,8 @@
 ﻿using Microsoft.Build.Framework.XamlTypes;
 using Newtonsoft.Json;
-using RentC.Helpers;
-using RentC.Models;
-using RentC.Services;
+using RentC_ConsoleApplication.Helpers;
+using RentC_ConsoleApplication.Models;
+using RentC_ConsoleApplication.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC.Controllers
+namespace RentC_ConsoleApplication.Controllers
 {
     public class ReservationController
     {

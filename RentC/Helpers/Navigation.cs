@@ -1,4 +1,4 @@
-﻿using RentC.Pages;
+﻿using RentC_ConsoleApplication.Pages;
 using RepoDb.Attributes;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC.Helpers
+namespace RentC_ConsoleApplication.Helpers
 {
     class Navigation
     {

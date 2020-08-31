@@ -5,15 +5,15 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RentC.Pages;
+using RentC_ConsoleApplication.Pages;
 using FluentValidation;
 using RepoDb;
 
 
-namespace RentC.Models
+namespace RentC_ConsoleApplication.Models
 {
     public class Customer
-    {
+    { 
 
         public int CustomerID { get; set; }
         public string Name { get; set; }

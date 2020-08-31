@@ -2,15 +2,15 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using RentC.Models;
+using RentC_ConsoleApplication.Models;
 using RepoDb;
-using RentC.Helpers;
-using RentC.Services;
+using RentC_ConsoleApplication.Helpers;
+using RentC_ConsoleApplication.Services;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
-using RentC.Controllers;
+using RentC_ConsoleApplication.Controllers;
 
-namespace RentC.Pages
+namespace RentC_ConsoleApplication.Pages
 {
     class Menu
     {

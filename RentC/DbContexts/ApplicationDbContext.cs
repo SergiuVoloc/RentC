@@ -1,5 +1,5 @@
 ﻿
-using RentC.Models;
+using RentC_ConsoleApplication.Models;
 using System.Data.Entity;
 
 

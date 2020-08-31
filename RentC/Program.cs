@@ -1,14 +1,14 @@
-﻿using RentC.Pages;
+﻿using RentC_ConsoleApplication.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RepoDb;
-using RentC.Helpers;
+using RentC_ConsoleApplication.Helpers;
 using RentCar.Helpers;
 
-namespace RentC
+namespace RentC_ConsoleApplication
 {
     class Program
     {

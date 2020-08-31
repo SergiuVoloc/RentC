@@ -1,6 +1,6 @@
-﻿using RentC.Helpers;
-using RentC.Models;
-using RentC.Services;
+﻿using RentC_ConsoleApplication.Helpers;
+using RentC_ConsoleApplication.Models;
+using RentC_ConsoleApplication.Services;
 using RepoDb;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC.Controllers
+namespace RentC_ConsoleApplication.Controllers
 {
     public class CustomerController
     {

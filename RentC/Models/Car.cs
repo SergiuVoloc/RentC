@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace RentC.Models
+namespace RentC_ConsoleApplication.Models
 {
     public class Car
     {

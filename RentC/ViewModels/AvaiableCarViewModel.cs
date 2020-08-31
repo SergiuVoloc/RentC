@@ -1,4 +1,4 @@
-﻿using RentC.Models;
+﻿using RentC_ConsoleApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC.ViewModels
+namespace RentC_ConsoleApplication.ViewModels
 {
     public class AvaiableCarViewModel
     {

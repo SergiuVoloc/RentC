@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentC.Helpers
+namespace RentC_ConsoleApplication.Helpers
 {
     public class PrintColorMessage
     {

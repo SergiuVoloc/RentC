@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using Newtonsoft.Json;
-using RentC.Helpers;
-using RentC.Models;
+using RentC_ConsoleApplication.Helpers;
+using RentC_ConsoleApplication.Models;
 using RentC_ConsoleApplication.DbContexts;
 using RepoDb;
 using System;
@@ -11,10 +11,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
-using static RentC.Models.Reservation;
+using static RentC_ConsoleApplication.Models.Reservation;
 
 
-namespace RentC.Services
+namespace RentC_ConsoleApplication.Services
 {
     public class ReservationService
     {

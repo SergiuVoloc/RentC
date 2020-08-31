@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_ConsoleApplication", "RentC_ConsoleApplication.csproj", "{FB77EF66-FE42-45F2-BCDB-30535E6AE56F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_WebApplication", "..\RentC_WebApplication\RentC_WebApplication.csproj", "{7FDEFE77-C488-41E7-9DCF-38CB046656E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC_Web", "..\RentC_Web\RentC_Web.csproj", "{32DFA338-758F-4997-B9C2-FD74090D01D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{FB77EF66-FE42-45F2-BCDB-30535E6AE56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB77EF66-FE42-45F2-BCDB-30535E6AE56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB77EF66-FE42-45F2-BCDB-30535E6AE56F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FDEFE77-C488-41E7-9DCF-38CB046656E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32DFA338-758F-4997-B9C2-FD74090D01D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32DFA338-758F-4997-B9C2-FD74090D01D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32DFA338-758F-4997-B9C2-FD74090D01D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32DFA338-758F-4997-B9C2-FD74090D01D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

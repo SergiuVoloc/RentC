@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
-using RentC.Helpers;
-using RentC.Models;
+using RentC_ConsoleApplication.Helpers;
+using RentC_ConsoleApplication.Models;
 using RentC_ConsoleApplication.DbContexts;
 using RepoDb;
 using System;
@@ -12,10 +12,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RentC.Models.Customer;
-using static RentC.Models.Customer;
+using static RentC_ConsoleApplication.Models.Customer;
 
-namespace RentC.Services
+namespace RentC_ConsoleApplication.Services
 {
     public class CustomerService
     {
